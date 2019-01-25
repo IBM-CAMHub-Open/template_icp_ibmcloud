@@ -1,0 +1,62 @@
+{
+    "name": "IBM Cloud Private HA",
+    "description": "This template will deploy IBM Cloud Private in a high availability configuration",
+    "version": "1.0",
+    "imageUrl": "",
+    "image": "",
+    "type": "prebuilt",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "IBM",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "templates/icp-ee",
+        "templateFileName": "main.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "IBM Cloud Private EE HA",
+      "providerDisplayName": "IBM",
+      "longDescription": "This template will deploy an HA configuration of IBM Cloud Private into the IBM Cloud",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " IBM Cloud<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Ubuntu 16<br>"},
+{
+    "title": "Topology",
+    "description": "HA configuration <br>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM Cloud Private<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 8, Memory (GB) 16, Disk (GB) 400<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. IBM Knowledge Center for IBM Cloud Private - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html</a><br>3. IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a><br>"
+}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}
+

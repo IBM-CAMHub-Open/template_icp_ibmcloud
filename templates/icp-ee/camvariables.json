@@ -1,0 +1,373 @@
+{
+  "input_groups": [
+    {
+      "name": "Globals",
+      "label": "Globals"
+    },
+    {
+      "name": "Instances",
+      "label": "Instances"
+    }
+  ],
+  "output_groups": [ ],
+  "template_input_params": [
+    {
+      "name": "icp_inception_image",
+      "label": "ICP inception image",
+      "description": "The ICP installer image to use. This corresponds to the version of ICP to install",
+      "default": "ibmcom/icp-inception-amd64:3.1.0-ee",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "group_name": "Global",
+      "type": "string"
+    },
+    {
+      "name": "image_location",
+      "label": "ICP image location",
+      "description": "URI for the ICP image package location",
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "group_name": "Global",
+      "type": "string"
+    },
+    {
+      "name": "os_reference_code",
+      "label": "OS to install on the VSIs",
+      "description": "OS to install on the VSIs. Use the API to determine valid values. Only Ubuntu 16.04 was tested",
+      "default": "UBUNTU_16_64",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "group_name": "Global",
+      "type": "string"
+    },
+    {
+      "name": "deployment",
+      "label": "ICP deployment Name",
+      "description": "Prefix of names for IBM Cloud ICP cluster resources; The name prefix must be 1-52 alphanumeric characters and dash",
+      "default": "icp",
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "group_name": "Global",
+      "type": "string",
+      "regex": "^[A-Za-z0-9-]{1,52}$"
+    },
+    {
+      "name": "key_name",
+      "label": "Array of SSH keys for created resources",
+      "description": "Array of SSH keys to add to root for all created VSI instances",
+      "default": [],
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "group_name": "Global",
+      "type": "list"
+    },
+    {
+      "name": "disabled_management_services",
+      "label": "List of management services to disable",
+      "description": "List of management services to disable",
+      "default": ["istio", "vulnerability-advisor", "storage-glusterfs", "storage-minio"],
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "group_name": "Global",
+      "type": "list"
+    },
+    {
+      "name": "datacenter",
+      "type": "string",
+      "description": "IBM Cloud datacenter to create the cluster in.",
+      "hidden": false,
+      "label": "Datacenter",
+      "secured": false,
+      "required": true,
+      "group_name": "Global",
+      "immutable": false,
+      "options": [
+        {
+          "value": "ams01",
+          "label": "Amsterdam 01, The Netherlands"
+        },
+        {
+          "value": "ams03",
+          "label": "Amsterdam 03, The Netherlands"
+        },
+        {
+          "value": "che01",
+          "label": "Chennai, India"
+        },
+        {
+          "value": "dal01",
+          "label": "Dallas 01, USA"
+        },
+        {
+          "value": "dal02",
+          "label": "Dallas 02, USA"
+        },
+        {
+          "value": "dal05",
+          "label": "Dallas 05, USA"
+        },
+        {
+          "value": "dal06",
+          "label": "Dallas 06, USA"
+        },
+        {
+          "value": "dal07",
+          "label": "Dallas 07, USA"
+        },
+        {
+          "value": "dal09",
+          "label": "Dallas 09, USA"
+        },
+        {
+          "value": "dal10",
+          "label": "Dallas 10, USA"
+        },
+        {
+          "value": "dal13",
+          "label": "Dallas 13, USA",
+          "default": "true"
+        },
+        {
+          "value": "fra02",
+          "label": "Frankfurt, Germany"
+        },
+        {
+          "value": "hkg02",
+          "label": "Hong Kong, China"
+        },
+        {
+          "value": "hou02",
+          "label": "Houston, USA"
+        },
+        {
+          "value": "lon02",
+          "label": "London, England"
+        },
+        {
+          "value": "mel01",
+          "label": "Melbourne, Australia"
+        },
+        {
+          "value": "mil01",
+          "label": "Milan, Italy"
+        },
+        {
+          "value": "mon01",
+          "label": "Montreal, Canada"
+        },
+        {
+          "value": "osl01",
+          "label": "Oslo, Norway"
+        },
+        {
+          "value": "par01",
+          "label": "Paris, France"
+        },
+        {
+          "value": "mex01",
+          "label": "Quer\u00e9taro, Mexico"
+        },
+        {
+          "value": "sjc01",
+          "label": "San Jose 01, USA"
+        },
+        {
+          "value": "sjc03",
+          "label": "San Jose 03, USA"
+        },
+        {
+          "value": "sao01",
+          "label": "Sao Paulo, Brazil"
+        },
+        {
+          "value": "sea01",
+          "label": "Seattle, USA"
+        },
+        {
+          "value": "seo01",
+          "label": "Seoul 01, Korea"
+        },
+        {
+          "value": "sng01",
+          "label": "Singapore, Singapore"
+        },
+        {
+          "value": "syd01",
+          "label": "Sydney, Australia"
+        },
+        {
+          "value": "tok02",
+          "label": "Tokyo, Japan"
+        },
+        {
+          "value": "tor01",
+          "label": "Toronto, Canada"
+        },
+        {
+          "value": "wdc01",
+          "label": "Washington, D.C. 01, USA"
+        },
+        {
+          "value": "wdc04",
+          "label": "Washington, D.C. 04, USA"
+        }
+      ]
+    },
+    {
+      "name": "domain",
+      "label": "Domain to be used on the VMs",
+      "description": "Specify domain name to be used for linux customization on the VMs, or leave blank to use <instance_name>.icp",
+      "default": "icp.com",
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "group_name": "Global",
+      "type": "string"
+    },
+    {
+      "name": "boot",
+      "label": "Boot",
+      "description": "Boot",
+      "type": "map",
+      "default": {
+        "cpu_cores": "4",
+        "memory": "4096",
+        "disk_size": "100",
+        "docker_vol_size": "100",
+        "local_disk": true,
+        "os_reference_code": "UBUNTU_16_64",
+        "network_speed": "1000",
+        "hourly_billing": true
+      },
+      "group_name": "Instances",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "master",
+      "label": "Master",
+      "description": "Master",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "cpu_cores": "8",
+        "memory": "16384",
+        "disk_size": "100",
+        "docker_vol_size": "100",
+        "local_disk": false,
+        "network_speed": "1000",
+        "hourly_billing": true
+      },
+      "group_name": "Instances",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "mgmt",
+      "label": "Mgmt",
+      "description": "Mgmt",
+      "type": "map",
+      "default": {
+        "nodes": "1",
+        "cpu_cores": "4",
+        "memory": "16384",
+        "disk_size": "100",
+        "docker_vol_size": "100",
+        "local_disk": false,
+        "network_speed": "1000",
+        "hourly_billing": true
+      },
+      "group_name": "Instances",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy",
+      "label": "Proxy",
+      "description": "Proxy",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "cpu_cores": "2",
+        "memory": "4096",
+        "disk_size": "100",
+        "docker_vol_size": "100",
+        "local_disk": false,
+        "network_speed": "1000",
+        "hourly_billing": true
+      },
+      "group_name": "Instances",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "va",
+      "label": "Va",
+      "description": "Va",
+      "type": "map",
+      "default": {
+        "nodes": "0",
+        "cpu_cores": "4",
+        "memory": "8192",
+        "disk_size": "100",
+        "docker_vol_size": "100",
+        "local_disk": false,
+        "network_speed": "1000",
+        "hourly_billing": true
+      },
+      "group_name": "Instances",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "worker",
+      "label": "Worker",
+      "description": "Worker",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "cpu_cores": "4",
+        "memory": "16384",
+        "disk_size": "100",
+        "docker_vol_size": "100",
+        "local_disk": false,
+        "network_speed": "1000",
+        "hourly_billing": true
+      },
+      "group_name": "Instances",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    }
+  ]
+}
