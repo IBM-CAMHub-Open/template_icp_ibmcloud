@@ -223,6 +223,17 @@
   ],
   "template_output_params": [
     {
+      "name": "ibm_cloud_private_boot_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Boot Node IP.",
+      "hidden": false,
+      "label": "IBM Cloud Private Boot IP",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },    
+    {
       "name": "ibm_cloud_private_master_ip",
       "type": "string",
       "description": "IBM Cloud Private Cluster Master Node IP.",
