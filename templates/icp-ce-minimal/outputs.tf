@@ -1,9 +1,9 @@
 output "ibm_cloud_private_boot_ip" {
-  value = "https://${element(ibm_compute_vm_instance.icp-master.*.ipv4_address, 0)}"
+  value = "${element(ibm_compute_vm_instance.icp-master.*.ipv4_address, 0)}"
 }
 
 output "ibm_cloud_private_master_ip" {
-  value = "https://${element(ibm_compute_vm_instance.icp-master.*.ipv4_address, 0)}"
+  value = "${element(ibm_compute_vm_instance.icp-master.*.ipv4_address, 0)}"
 }
 
 output "ICP Console URL" {
