@@ -11,7 +11,7 @@
           },
           {
             "name": "password",
-            "value": "${template_output_params.icp_admin_password}"
+            "value": "${template_output_params.ibm_cloud_private_admin_password}"
           },
           {
             "name": "ICP_server",
