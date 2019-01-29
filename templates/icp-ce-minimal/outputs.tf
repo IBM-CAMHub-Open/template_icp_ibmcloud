@@ -22,6 +22,6 @@ output "ICP Admin Username" {
   value = "admin"
 }
 
-output "ICP Admin Password" {
+output "ibm_cloud_private_admin_password" {
   value = "${local.icppassword}"
 }
