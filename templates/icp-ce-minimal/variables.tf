@@ -155,7 +155,7 @@ variable "worker" {
   type = "map"
 
   default = {
-    nodes       = "3"
+    nodes       = "1"
 
     cpu_cores   = "4"
     memory      = "4096"
