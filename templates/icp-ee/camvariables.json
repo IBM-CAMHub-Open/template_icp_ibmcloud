@@ -10,6 +10,28 @@
     }
   ],
   "output_groups": [ ],
+  "output_datatypes": [
+    {
+      "name": "com.ibm.cloud.cloudconnections.ICP",
+      "dataobject": {
+        "name": "${template_input_params.deployment}",
+        "attributes": [
+          {
+            "name": "username",
+            "value": "admin"
+          },
+          {
+            "name": "password",
+            "value": "${template_output_params.ibm_cloud_private_admin_password}"
+          },
+          {
+            "name": "ICP_server",
+            "value": "${template_output_params.ibm_cloud_private_master_ip}"
+          }
+        ]
+      }
+    }
+  ],
   "template_input_params": [
     {
       "name": "icp_inception_image",
@@ -369,5 +391,39 @@
       "immutable": false,
       "immutable_after_create": false
     }
-  ]
+  ],
+  "template_output_params": [
+    {
+      "name": "ibm_cloud_private_boot_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Boot Node IP.",
+      "hidden": false,
+      "label": "IBM Cloud Private Boot IP",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },    
+    {
+      "name": "ibm_cloud_private_master_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Master Node IP.",
+      "hidden": false,
+      "label": "IBM Cloud Private Master Node IP",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },
+    {
+      "name": "ibm_cloud_private_admin_password",
+      "description": "IBM Cloud Private Admin Username Password",
+      "type": "string",
+      "required": true,
+      "secured": true,
+      "label": "IBM Cloud Private Admin Password",
+      "hidden": false,
+      "immutable": false
+    }
+  ]  
 }

@@ -219,6 +219,17 @@
       "required": false,
       "secured": false,
       "type": "string"
+    },
+    {
+      "name": "disabled_management_services",
+      "label": "List of management services to disable",
+      "description": "List of management services to disable",
+      "default": ["istio", "vulnerability-advisor", "storage-glusterfs", "storage-minio", "metrics-server", "custom-metrics-adapter", "image-security-enforcement", "metering", "monitoring", "logging", "audit-logging"],
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "type": "list"
     }
   ],
   "template_output_params": [
