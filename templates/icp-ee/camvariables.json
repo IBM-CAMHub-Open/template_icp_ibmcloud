@@ -248,18 +248,6 @@
       ]
     },
     {
-      "name": "domain",
-      "label": "Domain to be used on the VMs",
-      "description": "Specify domain name to be used for linux customization on the VMs, or leave blank to use <instance_name>.icp",
-      "default": "icp.com",
-      "hidden": false,
-      "immutable": false,
-      "required": false,
-      "secured": false,
-      "group_name": "Global",
-      "type": "string"
-    },
-    {
       "name": "boot",
       "label": "Boot",
       "description": "Boot",

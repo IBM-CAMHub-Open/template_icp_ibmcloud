@@ -210,17 +210,6 @@
       ]
     },
     {
-      "name": "domain",
-      "label": "Domain to be used on the VMs",
-      "description": "Specify domain name to be used for linux customization on the VMs, or leave blank to use <instance_name>.icp",
-      "default": "icp.com",
-      "hidden": false,
-      "immutable": false,
-      "required": false,
-      "secured": false,
-      "type": "string"
-    },
-    {
       "name": "disabled_management_services",
       "label": "List of management services to disable",
       "description": "List of management services to disable",
