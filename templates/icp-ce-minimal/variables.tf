@@ -97,7 +97,7 @@ variable "mgmt" {
   type = "map"
 
   default = {
-    nodes       = "0"
+    nodes       = "1"
 
     cpu_cores   = "4"
     memory      = "16384"
