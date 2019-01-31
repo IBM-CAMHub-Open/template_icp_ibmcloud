@@ -253,6 +253,26 @@
       "label": "IBM Cloud Private Admin Password",
       "hidden": false,
       "immutable": false
+    },
+    {
+      "name": "ibm_cloud_private_console_url",
+      "description": "IBM Cloud Private Console URL",
+      "type": "url",
+      "required": true,
+      "secured": true,
+      "label": "ICP Console URL",
+      "hidden": false,
+      "immutable": false
+    },
+    {
+      "name": "ibm_cloud_private_console_url",
+      "description": "IBM Cloud Private Kubernetes API URL",
+      "type": "url",
+      "required": true,
+      "secured": true,
+      "label": "ICP Kubernetes API URL",
+      "hidden": false,
+      "immutable": false
     }
   ]  
 }
