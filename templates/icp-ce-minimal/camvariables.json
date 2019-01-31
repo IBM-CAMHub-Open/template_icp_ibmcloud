@@ -265,7 +265,7 @@
       "immutable": false
     },
     {
-      "name": "ibm_cloud_private_console_url",
+      "name": "ibm_cloud_private_kubernetes_api_url",
       "description": "IBM Cloud Private Kubernetes API URL",
       "type": "url",
       "required": true,
