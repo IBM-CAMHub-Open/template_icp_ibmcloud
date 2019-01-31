@@ -418,17 +418,17 @@
       "description": "IBM Cloud Private Console URL",
       "type": "url",
       "required": true,
-      "secured": true,
+      "secured": false,
       "label": "ICP Console URL",
       "hidden": false,
       "immutable": false
     },
     {
-      "name": "ibm_cloud_private_console_url",
+      "name": "ibm_cloud_private_kubernetes_api_url",
       "description": "IBM Cloud Private Kubernetes API URL",
       "type": "url",
       "required": true,
-      "secured": true,
+      "secured": false,
       "label": "ICP Kubernetes API URL",
       "hidden": false,
       "immutable": false
@@ -438,7 +438,7 @@
       "description": "IBM Cloud Private Registry URL",
       "type": "url",
       "required": true,
-      "secured": true,
+      "secured": false,
       "label": "ICP Registry URL",
       "hidden": false,
       "immutable": false
