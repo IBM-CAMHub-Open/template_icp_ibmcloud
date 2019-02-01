@@ -17,6 +17,11 @@ output "ibm_cloud_private_kubernetes_api_url" {
 output "ibm_cloud_private_registry_url" {
   value = "${ibm_lbaas.master-lbaas.vip}:8500"
 }
+
+output "ibm_cloud_private_admin_password" {
+  value = "${local.icppassword}"
+}
+
 output "ICP Console load balancer DNS (external)" {
   value = "${ibm_lbaas.master-lbaas.vip}"
 }
@@ -27,8 +32,4 @@ output "ICP Proxy load balancer DNS (external)" {
 
 output "ICP Admin Username" {
   value = "admin"
-}
-
-output "ICP Admin Password" {
-  value = "${local.icppassword}"
 }
