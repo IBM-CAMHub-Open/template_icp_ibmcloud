@@ -18,6 +18,10 @@ output "ibm_cloud_private_admin_password" {
   value = "${local.icppassword}"
 }
 
+output "ibm_cloud_private_ca_domain_name" {
+  value = "${var.deployment}.icp"
+}
+
 output "ICP Console load balancer DNS (external)" {
   value = "${ibm_lbaas.master-lbaas.vip}"
 }

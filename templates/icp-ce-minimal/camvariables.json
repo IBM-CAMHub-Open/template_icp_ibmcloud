@@ -245,6 +245,17 @@
       "immutable": false
     },
     {
+      "name": "ibm_cloud_private_ca_domain_name",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster CA domain name.",
+      "hidden": false,
+      "label": "IBM Cloud Private CA domain name",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },
+    {
       "name": "ibm_cloud_private_admin_password",
       "description": "IBM Cloud Private Admin Username Password",
       "type": "string",
