@@ -72,7 +72,7 @@
       "name": "deployment",
       "label": "ICP deployment Name",
       "description": "Prefix of names for IBM Cloud ICP cluster resources; The name prefix must be 1-52 alphanumeric characters and dash",
-      "default": "icp",
+      "default": "mycluster",
       "hidden": false,
       "immutable": false,
       "required": false,

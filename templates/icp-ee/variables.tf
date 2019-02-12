@@ -35,7 +35,7 @@ variable "public_vlan_number" {
 
 variable "deployment" {
    description = "Identifier prefix added to the host names."
-   default = "icp"
+   default = "mycluster"
 }
 
 variable "os_reference_code" {
