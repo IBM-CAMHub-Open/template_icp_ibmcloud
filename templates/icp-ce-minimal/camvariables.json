@@ -225,7 +225,7 @@
     {
       "name": "ibm_cloud_private_boot_ip",
       "type": "string",
-      "description": "IBM Cloud Private Cluster Boot Node IP.",
+      "description": "IBM Cloud Private cluster boot node IP.",
       "hidden": false,
       "label": "IBM Cloud Private Boot IP",
       "secured": false,
@@ -236,7 +236,7 @@
     {
       "name": "ibm_cloud_private_master_ip",
       "type": "string",
-      "description": "IBM Cloud Private Cluster Master Node IP.",
+      "description": "IBM Cloud Private cluster master node IP.",
       "hidden": false,
       "label": "IBM Cloud Private Master Node IP",
       "secured": false,
@@ -247,7 +247,7 @@
     {
       "name": "ibm_cloud_private_ca_domain_name",
       "type": "string",
-      "description": "IBM Cloud Private Cluster CA domain name.",
+      "description": "IBM Cloud Private cluster CA domain name.",
       "hidden": false,
       "label": "IBM Cloud Private CA domain name",
       "secured": false,
@@ -257,7 +257,7 @@
     },
     {
       "name": "ibm_cloud_private_admin_password",
-      "description": "IBM Cloud Private Admin Username Password",
+      "description": "IBM Cloud Private admin password",
       "type": "string",
       "required": true,
       "secured": true,
