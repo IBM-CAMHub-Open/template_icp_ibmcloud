@@ -19,7 +19,7 @@ output "ibm_cloud_private_registry_url" {
 }
 
 output "ibm_cloud_private_ca_domain_name" {
-  value = "${var.deployment}.icp"
+  value = "${var.domain}"
 }
 
 output "ibm_cloud_private_admin_password" {

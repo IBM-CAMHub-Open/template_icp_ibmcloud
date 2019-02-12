@@ -82,6 +82,18 @@
       "regex": "^[A-Za-z0-9-]{1,52}$"
     },
     {
+      "name": "domain",
+      "label": "ICP cluster domain name",
+      "description": "Prefix of names for IBM Cloud ICP cluster resources; The name prefix must be 1-52 alphanumeric characters and dash",
+      "default": "mycluster.icp",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "group_name": "Global",
+      "type": "string"
+    },
+    {
       "name": "key_name",
       "label": "Array of SSH keys for created resources",
       "description": "Array of SSH keys to add to root for all created VSI instances",
