@@ -29,3 +29,6 @@ output "ICP Admin Username" {
 output "ibm_cloud_private_admin_password" {
   value = "${local.icppassword}"
 }
+output "connection_name" {
+	value = "${var.deployment}${random_id.clusterid.hex}"
+}

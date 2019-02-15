@@ -37,4 +37,7 @@ output "ICP Registry URL" {
 output "ICP Admin Username" {
   value = "admin"
 }
+output "connection_name" {
+	value = "${var.deployment}${random_id.clusterid.hex}"
+}
 

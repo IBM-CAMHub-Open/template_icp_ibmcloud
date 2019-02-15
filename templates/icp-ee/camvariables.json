@@ -14,7 +14,7 @@
     {
       "name": "com.ibm.cloud.cloudconnections.ICP",
       "dataobject": {
-        "name": "${template_input_params.deployment}",
+        "name": "${template_output_params.connection_name}",
         "attributes": [
           {
             "name": "username",
@@ -463,6 +463,16 @@
       "required": true,
       "secured": false,
       "label": "ICP Registry URL",
+      "hidden": false,
+      "immutable": false
+    },
+    {
+      "name": "connection_name",
+      "description": "IBM Cloud Private Cloud Connection Name",
+      "type": "string",
+      "required": false,
+      "secured": false,
+      "label": "IBM Cloud Private Cloud Connection Name",
       "hidden": false,
       "immutable": false
     }
