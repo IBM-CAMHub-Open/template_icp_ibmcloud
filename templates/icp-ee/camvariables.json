@@ -85,7 +85,7 @@
       "name": "domain",
       "label": "ICP cluster domain name",
       "description": "Prefix of names for IBM Cloud ICP cluster resources; The name prefix must be 1-52 alphanumeric characters and dash",
-      "default": "mycluster.icp",
+      "default": "${template_input_params.deployment}.icp",
       "hidden": false,
       "immutable": false,
       "required": true,
