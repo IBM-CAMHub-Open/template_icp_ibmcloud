@@ -70,7 +70,7 @@
     },
     {
       "name": "deployment",
-      "label": "ICP deployment Name",
+      "label": "ICP cluster name",
       "description": "Prefix of names for IBM Cloud ICP cluster resources; The name prefix must be 1-52 alphanumeric characters and dash",
       "default": "mycluster",
       "hidden": false,
@@ -84,8 +84,8 @@
     {
       "name": "domain",
       "label": "ICP cluster domain name",
-      "description": "Prefix of names for IBM Cloud ICP cluster resources; The name prefix must be 1-52 alphanumeric characters and dash",
-      "default": "${template_input_params.deployment}.icp",
+      "description": "Domain name to be used for linux customization on the VMs",
+      "default": "mycluster.icp",
       "hidden": false,
       "immutable": false,
       "required": true,
