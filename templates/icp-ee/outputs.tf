@@ -19,7 +19,7 @@ output "ibm_cloud_private_registry_url" {
 }
 
 output "ibm_cloud_private_ca_domain_name" {
-  value = "${var.domain}"
+  value = "${ibm_lbaas.master-lbaas.vip}"
 }
 
 output "ibm_cloud_private_admin_password" {
