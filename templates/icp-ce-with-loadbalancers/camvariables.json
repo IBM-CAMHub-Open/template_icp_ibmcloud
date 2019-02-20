@@ -15,7 +15,7 @@
           },
           {
             "name": "ICP_server",
-            "value": "${template_output_params.ibm_cloud_private_master_ip}"
+            "value": "${template_output_params.ibm_cloud_private_ca_domain_name}"
           }
         ]
       }
