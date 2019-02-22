@@ -8,6 +8,9 @@ while getopts ":p:r:c:" arg; do
       r)
         registry=${OPTARG}
         ;;
+      u)
+        reguser=${OPTARG}
+        ;;  
       c)
         regpassword=${OPTARG}
         ;;
@@ -75,7 +78,7 @@ sudo cp /etc/registry/registry-cert.pem /etc/docker/certs.d/${registry}/ca.crt
 sudo mkdir /auth
 sudo docker run \
   --entrypoint htpasswd \
-  registry:2 -Bbn icpdeploy ${regpassword} | sudo tee /auth/htpasswd
+  registry:2 -Bbn ${reguser} ${regpassword} | sudo tee /auth/htpasswd
 
 sudo docker run -d \
   --restart=always \
@@ -87,20 +90,20 @@ sudo docker run -d \
   -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
   -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
   -e REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/registry \
-  -e REGISTRY_HTTP_ADDR=0.0.0.0:443 \
+  -e REGISTRY_HTTP_ADDR=0.0.0.0:8500 \
   -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry-cert.pem \
   -e REGISTRY_HTTP_TLS_KEY=/certs/registry-key.pem  \
-  -p 443:443 \
+  -p 8500:8500 \
   registry:2
 
 # Retag images for private registry
-sudo docker images | grep -v REPOSITORY | grep -v ${registry} | awk '{print $1 ":" $2}' | xargs -n1 -I{} sudo docker tag {} ${registry}/{}
+sudo docker images | grep -v REPOSITORY | grep -v ${registry} | awk '{print $1 ":" $2}' | xargs -n1 -I{} sudo docker tag {} ${registry}:8500/{}
 
 # ICP 3.1.0 archives also includes the architecture in image names which is not expected in private repos, also tag a non-arched version
-sudo docker images | grep ${registry} | grep "amd64" | awk '{gsub("-amd64", "") ; print $1 "-amd64:" $2 " " $1 ":" $2 }' | xargs -n2  sh -c 'sudo docker tag $1 $2' argv0
+sudo docker images | grep ${registry}:8500 | grep "amd64" | awk '{gsub("-amd64", "") ; print $1 "-amd64:" $2 " " $1 ":" $2 }' | xargs -n2  sh -c 'sudo docker tag $1 $2' argv0
 
 # Push all images and tags to private docker registry
-sudo docker login --password ${regpassword} --username icpdeploy ${registry}
+sudo docker login --password ${regpassword} --username ${reguser} ${registry}:8500
 while read image; do
   echo "Pushing ${image}"
   sudo docker push ${image} >> /tmp/imagepush.log

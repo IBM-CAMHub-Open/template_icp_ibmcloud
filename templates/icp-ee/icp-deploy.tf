@@ -45,7 +45,7 @@ resource "null_resource" "image_load" {
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 1; done",
       "sudo mv /tmp/load_image.sh /opt/ibm/scripts/",
       "sudo chmod a+x /opt/ibm/scripts/load_image.sh",
-      "/opt/ibm/scripts/load_image.sh -p ${var.image_location} -r ${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain} -c ${local.docker_password}",
+      "/opt/ibm/scripts/load_image.sh -p ${var.image_location} -r ${local.registry_server} -u ${local.docker_username} -c ${local.docker_password}",
       "sudo touch /opt/ibm/.imageload_complete"
     ]
   }

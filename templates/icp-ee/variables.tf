@@ -208,7 +208,7 @@ variable "icp_inception_image" {
 }
 
 variable "registry_username" {
-  default   = ""
+  default   = "admin"
 }
 
 variable "registry_password" {

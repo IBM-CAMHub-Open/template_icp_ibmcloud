@@ -14,8 +14,8 @@ output "ibm_cloud_private_kubernetes_api_url" {
   value = "https://${ibm_lbaas.master-lbaas.vip}:8001"
 }
 
-output "ibm_cloud_private_registry_url" {
-  value = "${ibm_lbaas.master-lbaas.vip}:8500"
+output "ibm_cloud_private_registry_server" {
+  value = "${local.registry_server}"
 }
 
 output "ibm_cloud_private_ca_domain_name" {
