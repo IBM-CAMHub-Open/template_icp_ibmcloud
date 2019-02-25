@@ -187,7 +187,7 @@ write_files:
     permissions: '0755'
     encoding: b64
     content: ${base64encode(file("${path.module}/scripts/bootstrap.sh"))}
-  - path: /etc/docker/certs.d/${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}/ca.crt
+  - path: /etc/docker/certs.d/${local.registry_server}:8500/ca.crt
     permissions: '600'
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
@@ -307,7 +307,7 @@ write_files:
     permissions: '0755'
     encoding: b64
     content: ${base64encode(file("${path.module}/scripts/bootstrap.sh"))}
-  - path: /etc/docker/certs.d/${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}/ca.crt
+  - path: /etc/docker/certs.d/${local.registry_server}:8500/ca.crt
     permissions: '600'
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
@@ -410,7 +410,7 @@ write_files:
     permissions: '0755'
     encoding: b64
     content: ${base64encode(file("${path.module}/scripts/bootstrap.sh"))}
-  - path: /etc/docker/certs.d/${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}/ca.crt
+  - path: /etc/docker/certs.d/${local.registry_server}:8500/ca.crt
     permissions: '600'
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
@@ -514,7 +514,7 @@ write_files:
     permissions: '0755'
     encoding: b64
     content: ${base64encode(file("${path.module}/scripts/bootstrap.sh"))}
-  - path: /etc/docker/certs.d/${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}/ca.crt
+  - path: /etc/docker/certs.d/${local.registry_server}:8500/ca.crt
     permissions: '600'
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
@@ -621,7 +621,7 @@ write_files:
     permissions: '0755'
     encoding: b64
     content: ${base64encode(file("${path.module}/scripts/bootstrap.sh"))}
-  - path: /etc/docker/certs.d/${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}/ca.crt
+  - path: /etc/docker/certs.d/${local.registry_server}:8500/ca.crt
     permissions: '600'
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
