@@ -29,10 +29,10 @@ locals {
     namespace       = "${dirname(var.icp_inception_image)}" # This will typically return ibmcom
 
     # The final image repo will be either interpolated from what supplied in icp_inception_image or
-    image_repo      = "${var.image_location == "" ? dirname(var.icp_inception_image) : "${local.registry_server}/${local.namespace}"}"
+    image_repo      = "${var.image_location == "" ? dirname(var.icp_inception_image) : "${local.registry_server}:8500/${local.namespace}"}"
 
     # If we're using external registry we need to be supplied registry_username and registry_password
-    docker_username = "${var.registry_username != "" ? var.registry_username : "icpdeploy"}"
+    docker_username = "${var.registry_username != "" ? var.registry_username : "admin"}"
     docker_password = "${var.registry_password != "" ? var.registry_password : "${local.icppassword}"}"
 
     # This is just to have a long list of disabled items to use in icp-deploy.tf
