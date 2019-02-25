@@ -169,6 +169,10 @@
           "label": "Dallas 10, USA"
         },
         {
+          "value": "dal02",
+          "label": "Dallas 12, USA"
+        },
+        {
           "value": "dal13",
           "label": "Dallas 13, USA",
           "default": "true"
