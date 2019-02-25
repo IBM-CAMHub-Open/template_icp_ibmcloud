@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts ":p:r:c:" arg; do
+while getopts ":p:r:u:c:" arg; do
     case "${arg}" in
       p)
         package_location=${OPTARG}
