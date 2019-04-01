@@ -563,7 +563,6 @@ EOF
   }
 }
 
-
 resource "ibm_compute_vm_instance" "icp-worker" {
   count = "${var.worker["nodes"]}"
 
