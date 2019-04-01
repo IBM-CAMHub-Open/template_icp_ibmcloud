@@ -37,7 +37,7 @@
       "name": "icp_inception_image",
       "label": "ICP inception image",
       "description": "The ICP installer image to use. This corresponds to the version of ICP to install",
-      "default": "ibmcom/icp-inception-amd64:3.1.1-ee",
+      "default": "ibmcom/icp-inception-amd64:3.1.2-ee",
       "hidden": false,
       "immutable": false,
       "required": true,

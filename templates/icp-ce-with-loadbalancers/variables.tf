@@ -177,7 +177,7 @@ variable "icppassword" {
 
 variable "icp_inception_image" {
   description = "ICP image to use for installation"
-  default     = "ibmcom/icp-inception:3.1.1"
+  default     = "ibmcom/icp-inception:3.1.2"
 }
 
 variable "network_cidr" {
