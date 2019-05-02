@@ -112,7 +112,8 @@
         },
         {
           "value": "dal09",
-          "label": "Dallas 09, USA"
+          "label": "Dallas 09, USA",
+          "default": "true"
         },
         {
           "value": "dal10",
@@ -124,8 +125,7 @@
         },
         {
           "value": "dal13",
-          "label": "Dallas 13, USA",
-          "default": "true"
+          "label": "Dallas 13, USA"
         },
         {
           "value": "fra02",
