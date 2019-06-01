@@ -6,6 +6,10 @@ module "icpprovision" {
     
     # Provide IP addresses for boot, master, mgmt, va, proxy and workers
     boot-node = "${ibm_compute_vm_instance.icp-master.ipv4_address}"
+
+    #in support of workers scaling
+ 	icp-worker = ["${ibm_compute_vm_instance.icp-worker.*.ipv4_address}"]
+
     icp-host-groups = {
         master = ["${ibm_compute_vm_instance.icp-master.*.ipv4_address}"]
         proxy = ["${ibm_compute_vm_instance.icp-proxy.*.ipv4_address}"]

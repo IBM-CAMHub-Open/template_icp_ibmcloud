@@ -59,6 +59,10 @@ module "icpprovision" {
     # Provide IP addresses for boot, master, mgmt, va, proxy and workers
     boot-node = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
     bastion_host  = "${var.private_network_only ? ibm_compute_vm_instance.icp-boot.ipv4_address_private : ibm_compute_vm_instance.icp-boot.ipv4_address}"
+
+    #in support of workers scaling
+ 	icp-worker = ["${ibm_compute_vm_instance.icp-worker.*.ipv4_address_private}"]
+
     icp-host-groups = {
         master = ["${ibm_compute_vm_instance.icp-master.*.ipv4_address_private}"]
         proxy = ["${ibm_compute_vm_instance.icp-proxy.*.ipv4_address_private}"]
