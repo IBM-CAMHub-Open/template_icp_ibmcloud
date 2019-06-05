@@ -1,7 +1,7 @@
 # ICP Community Edition (CE) with load balancers on IBM Cloud
 
 This Terraform example configurations uses the [IBM Cloud  provider](https://ibm-cloud.github.io/tf-ibm-docs/index.html) to provision virtual machines on IBM Cloud Infrastructure (SoftLayer)
-and [Terraform Module ICP Deploy](https://github.com/IBM-CAMHub-Open/template_icp_modules/tree/master/public_cloud) to prepare VSIs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) version 3.1.1.  This Terraform template automates best practices learned from installing ICP on IBM Cloud Infrastructure.
+and [Terraform Module ICP Deploy](https://github.com/IBM-CAMHub-Open/template_icp_modules/tree/master/public_cloud) to prepare VSIs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) version 3.2.0.  This Terraform template automates best practices learned from installing ICP on IBM Cloud Infrastructure.
 
 ## Deployment overview
 This template creates an environment where

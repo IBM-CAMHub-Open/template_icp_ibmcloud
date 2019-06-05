@@ -1,7 +1,7 @@
 # ICP Community Edition (CE) on IBM Cloud
 
 This Terraform example configurations uses the [IBM Cloud  provider](https://ibm-cloud.github.io/tf-ibm-docs/index.html) to provision virtual machines on IBM Cloud Infrastructure (SoftLayer)
-and [Terraform Module ICP Deploy](https://github.com/IBM-CAMHub-Open/template_icp_modules/tree/master/public_cloud) to prepare VSIs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) version 3.1.1.  This Terraform template automates best practices learned from installing ICP on IBM Cloud Infrastructure.
+and [Terraform Module ICP Deploy](https://github.com/IBM-CAMHub-Open/template_icp_modules/tree/master/public_cloud) to prepare VSIs and deploy [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) version 3.2.0.  This Terraform template automates best practices learned from installing ICP on IBM Cloud Infrastructure.
 
 ## Deployment overview
 This template creates an environment where
@@ -46,8 +46,8 @@ The default configuration deploys a 4 node topology as follows:
 The automation leverages Security Groups to lock down public and private access to the cluster.
 
 - SSH is allowed to all cluster nodes to ease exploration and investigation
-- UDP and TCP port 30000 - 32767 are allowed on proxy node to enable use of [NodePort](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_applications/expose_app.html)
-- Inbound communication to the master node is permitted on [ports relevant to the ICP service](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/supported_system_config/required_ports.html)
+- UDP and TCP port 30000 - 32767 are allowed on proxy node to enable use of [NodePort](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/manage_applications/expose_app.html)
+- Inbound communication to the master node is permitted on [ports relevant to the ICP service](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/supported_system_config/required_ports.html)
 - All outbound communication is allowed.
 - All other communication is only permitted between cluster nodes.
 
