@@ -18,6 +18,12 @@ module "icpprovision" {
         va = ["${ibm_compute_vm_instance.icp-va.*.ipv4_address}"]
     }
 
+    #in support of workers scaling
+    icp-worker = ["${ibm_compute_vm_instance.icp-worker.*.ipv4_address}"]
+    
+    #in support of version upgrade
+    icp-version-upgrade = "${var.icp_inception_image}"
+
     # Provide desired ICP version to provision
     icp-version = "${var.icp_inception_image}"
 
