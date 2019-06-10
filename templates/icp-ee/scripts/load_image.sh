@@ -17,6 +17,22 @@ while getopts ":p:r:u:c:" arg; do
     esac
 done
 
+if [ -z "${package_location}" ]; then
+
+ echo " no image file, do nothing"
+  exit 0
+fi
+
+basenamef=$(basename ${package_location})
+echo "basenamef=$basenamef"
+
+if [ -f /opt/ibm/cluster/images/$basenamef ]; then
+ 	echo "image file seems to have been already loaded to /opt/ibm/cluster/images/$basenamef, do nothing"
+  exit 0
+
+fi
+
+
 # find my private IP address, which will be on the interface the default route is configured on
 myip=`ip route get 10.0.0.11 | awk 'NR==1 {print $NF}'`
 

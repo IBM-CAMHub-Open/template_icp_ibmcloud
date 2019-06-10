@@ -7,6 +7,10 @@ resource "null_resource" "image_copy" {
   # Only copy image from local location if not available remotely
   count = "${var.image_location != "" && ! (substr(var.image_location, 0, 3) != "nfs"  || substr(var.image_location, 0, 4) != "http") ? 1 : 0}"
 
+  triggers {
+    imagelocation = "${var.image_location}"
+  }
+
   provisioner "file" {
     connection {
       host          = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
@@ -25,6 +29,9 @@ resource "null_resource" "image_load" {
   count = "${var.image_location != "" ? 1 : 0}"
   depends_on = ["null_resource.image_copy"]
 
+  triggers {
+    imagelocation = "${var.image_location}"
+  }
 
   connection {
     host          = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
