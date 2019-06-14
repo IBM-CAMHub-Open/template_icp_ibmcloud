@@ -249,6 +249,17 @@
       "immutable": false
     },
     {
+      "name": "ibm_cloud_private_proxy_ip",
+      "type": "string",
+      "description": "IBM Cloud Private cluster proxy node IP.",
+      "hidden": false,
+      "label": "IBM Cloud Private Proxy Node IP",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },
+    {
       "name": "ibm_cloud_private_ca_domain_name",
       "type": "string",
       "description": "IBM Cloud Private cluster CA domain name.",

@@ -407,7 +407,18 @@
       "system": false,
       "required": true,
       "immutable": false
-    },    
+    },
+    {
+      "name": "ibm_cloud_private_proxy_vip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Proxy Node VIP.",
+      "hidden": false,
+      "label": "IBM Cloud Private Proxy VIP",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },
     {
       "name": "ibm_cloud_private_master_ip",
       "type": "string",

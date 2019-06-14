@@ -34,6 +34,10 @@ output "ICP Proxy load balancer DNS (external)" {
   value = "${ibm_lbaas.proxy-lbaas.vip}"
 }
 
+output "ibm_cloud_private_proxy_vip" {
+  value = "${ibm_lbaas.proxy-lbaas.vip}"
+}
+
 output "ICP Admin Username" {
   value = "admin"
 }

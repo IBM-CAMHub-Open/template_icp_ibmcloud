@@ -23,7 +23,7 @@
       }
     },
     "metadata": {
-      "displayName": "IBM Cloud Private CE minimal installation",
+      "displayName": "IBM Cloud Private minimal installation",
       "providerDisplayName": "IBM",
       "longDescription": "This template will deploy a minimal installation of IBM Cloud Private CE into the IBM Cloud",
       "bullets": [{

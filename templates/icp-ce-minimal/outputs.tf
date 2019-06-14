@@ -18,14 +18,13 @@ output "ibm_cloud_private_ca_domain_name" {
   value = "${var.deployment}.icp"
 }
 
-output "ICP Proxy" {
+output "ibm_cloud_private_proxy_ip" {
   value = "${element(ibm_compute_vm_instance.icp-proxy.*.ipv4_address, 0)}"
 }
 
 output "ICP Admin Username" {
   value = "admin"
 }
-
 output "ibm_cloud_private_admin_password" {
   value = "${local.icppassword}"
 }
