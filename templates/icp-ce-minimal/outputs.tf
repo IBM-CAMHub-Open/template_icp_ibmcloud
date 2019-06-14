@@ -19,7 +19,8 @@ output "ibm_cloud_private_ca_domain_name" {
 }
 
 output "ibm_cloud_private_proxy_ip" {
-  value = "${element(ibm_compute_vm_instance.icp-proxy.*.ipv4_address, 0)}"
+  #value = "${element(ibm_compute_vm_instance.icp-proxy.*.ipv4_address, 0)}"
+  value = "${element(ibm_compute_vm_instance.icp-proxy.*.hostname, 0)}"
 }
 
 output "ICP Admin Username" {
