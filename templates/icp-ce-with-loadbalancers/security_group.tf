@@ -126,6 +126,26 @@ resource "ibm_security_group_rule" "allow_port_443" {
   security_group_id = "${ibm_security_group.proxy_group.id}"
 }
 
+resource "ibm_security_group_rule" "allow_proxy_tcp_nodeport" {
+  direction = "ingress"
+  ether_type = "IPv4"
+  protocol = "tcp"
+  port_range_min = 30000
+  port_range_max = 32767
+  remote_ip = "0.0.0.0/0"
+  security_group_id = "${ibm_security_group.proxy_group.id}"
+}
+
+resource "ibm_security_group_rule" "allow_proxy_upd_nodeport" {
+  direction = "ingress"
+  ether_type = "IPv4"
+  protocol = "udp"
+  port_range_min = 30000
+  port_range_max = 32767
+  remote_ip = "0.0.0.0/0"
+  security_group_id = "${ibm_security_group.proxy_group.id}"
+}
+
 resource "ibm_security_group" "proxy_group" {
   name = "${var.deployment}-proxy-${random_id.clusterid.hex}"
   description = "allow incoming to proxy"
