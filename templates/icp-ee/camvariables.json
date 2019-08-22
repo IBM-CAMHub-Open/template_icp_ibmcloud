@@ -479,6 +479,14 @@
       "label": "IBM Cloud Private Cloud Connection Name",
       "hidden": false,
       "immutable": false
-    }
+    },
+    {
+      "name": "registry_config_do_name",
+      "type": "string",
+      "description": "Name of docker private registry data object that contains docker registry details for this deployment.",
+      "hidden": false,
+      "label": "Docker Private Registry Data Object Name",
+      "secured": false
+    }           
   ]  
 }
