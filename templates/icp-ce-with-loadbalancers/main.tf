@@ -39,7 +39,7 @@ module "gather_output" {
 	  icp_master 				          = "${ibm_compute_vm_instance.icp-master.*.ipv4_address}"
 	  ssh_user 					          = "icpdeploy"
 	  ssh_key_base64 		          = "${base64encode(tls_private_key.installkey.private_key_pem)}"
-    bastion_host 			          = "${element(ibm_compute_vm_instance.icp-boot.*.ipv4_address, 0)}"
-	  bastion_user    	          = "icpdeploy"
-	  bastion_private_key_base64 	= "${base64encode(tls_private_key.installkey.private_key_pem)}"
+    bastion_host 			          = ""
+	  bastion_user    	          = ""
+	  bastion_private_key_base64 	= ""
 }
