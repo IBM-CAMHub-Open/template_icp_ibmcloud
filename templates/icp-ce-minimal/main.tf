@@ -36,7 +36,7 @@ resource "random_id" "adminpassword" {
 module "gather_output" {
     source 						          = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//public_cloud_output"
 	  cluster_CA_domain           = "${var.deployment}.icp"
-	  icp_master 				          = "${element(ibm_compute_vm_instance.icp-master.*.ipv4_address, 0)}"
+	  icp_master 				          = "${ibm_compute_vm_instance.icp-master.*.ipv4_address}"
 	  ssh_user 					          = "icpdeploy"
 	  ssh_key_base64 		          = "${base64encode(tls_private_key.installkey.private_key_pem)}"
     bastion_host 			          = ""
