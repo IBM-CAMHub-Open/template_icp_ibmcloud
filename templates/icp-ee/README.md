@@ -13,7 +13,7 @@ This template creates an environment where
  - IBM File Storage providing shared storage for master nodes
  - No Vulnerability Advisor node and vulnerability advisor service disabled by default 
 
-The default configuration deploys a 6 node and 2 load balancers topology as follows: 
+The default configuration deploys a 11 node and 2 load balancers topology as follows: 
  - One boot node
  - Three master nodes
  - Three proxy nodes

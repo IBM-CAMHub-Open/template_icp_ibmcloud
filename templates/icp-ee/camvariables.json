@@ -117,7 +117,7 @@
     {
       "name": "key_name",
       "label": "Array of SSH keys for created resources",
-      "description": "Array of SSH keys to add to root for all created VSI instances",
+      "description": "Array of SSH keys to add to root user for all created VSI instances",
       "default": [],
       "hidden": false,
       "immutable": false,
@@ -162,24 +162,12 @@
           "label": "Chennai, India"
         },
         {
-          "value": "dal01",
-          "label": "Dallas 01, USA"
-        },
-        {
-          "value": "dal02",
-          "label": "Dallas 02, USA"
-        },
-        {
           "value": "dal05",
           "label": "Dallas 05, USA"
         },
         {
           "value": "dal06",
           "label": "Dallas 06, USA"
-        },
-        {
-          "value": "dal07",
-          "label": "Dallas 07, USA"
         },
         {
           "value": "dal09",
@@ -247,6 +235,10 @@
           "label": "San Jose 03, USA"
         },
         {
+          "value": "sjc04",
+          "label": "San Jose 04, USA"
+        },
+        {
           "value": "sao01",
           "label": "Sao Paulo, Brazil"
         },
@@ -281,6 +273,14 @@
         {
           "value": "wdc04",
           "label": "Washington, D.C. 04, USA"
+        },
+        {
+          "value": "wdc06",
+          "label": "Washington, D.C. 06, USA"
+        },
+        {
+          "value": "wdc07",
+          "label": "Washington, D.C. 07, USA"
         }
       ]
     },
