@@ -1,4 +1,5 @@
 {
+  "terraform_engine": "~> 0.11.0",
   "input_groups": [
     {
       "name": "Globals",
@@ -30,6 +31,27 @@
           }
         ]
       }
+    },
+    {
+      "name": "private_docker_registry",
+      "dataobject": {
+        "name": "${template_output_params.registry_config_do_name}",
+        "attributes": [
+          {
+            "name": "server_name",
+            "value": "${template_output_params.ibm_cloud_private_ca_domain_name}"
+          }, {
+            "name": "server_ip",
+            "value": "${template_output_params.ibm_cloud_private_master_ip}"
+          }, {
+            "name": "server_port",
+            "value": "8500"
+          }, {
+            "name": "CA_certificate",
+            "value": "${template_output_params.registry_ca_cert}"
+          }
+        ]
+      }     
     }
   ],
   "template_input_params": [
@@ -37,8 +59,8 @@
       "name": "icp_inception_image",
       "label": "ICP inception image",
       "description": "The ICP installer image to use. This corresponds to the version of ICP to install",
-      "default": "ibmcom/icp-inception-amd64:3.1.1-ee",
-      "hidden": false,
+      "default": "ibmcom/icp-inception-amd64:3.2.1-ee",
+      "hidden": true,
       "immutable": false,
       "required": true,
       "secured": false,
@@ -96,7 +118,7 @@
     {
       "name": "key_name",
       "label": "Array of SSH keys for created resources",
-      "description": "Array of SSH keys to add to root for all created VSI instances",
+      "description": "Array of SSH keys to add to root user for all created VSI instances",
       "default": [],
       "hidden": false,
       "immutable": false,
@@ -141,24 +163,12 @@
           "label": "Chennai, India"
         },
         {
-          "value": "dal01",
-          "label": "Dallas 01, USA"
-        },
-        {
-          "value": "dal02",
-          "label": "Dallas 02, USA"
-        },
-        {
           "value": "dal05",
           "label": "Dallas 05, USA"
         },
         {
           "value": "dal06",
           "label": "Dallas 06, USA"
-        },
-        {
-          "value": "dal07",
-          "label": "Dallas 07, USA"
         },
         {
           "value": "dal09",
@@ -226,6 +236,10 @@
           "label": "San Jose 03, USA"
         },
         {
+          "value": "sjc04",
+          "label": "San Jose 04, USA"
+        },
+        {
           "value": "sao01",
           "label": "Sao Paulo, Brazil"
         },
@@ -260,6 +274,14 @@
         {
           "value": "wdc04",
           "label": "Washington, D.C. 04, USA"
+        },
+        {
+          "value": "wdc06",
+          "label": "Washington, D.C. 06, USA"
+        },
+        {
+          "value": "wdc07",
+          "label": "Washington, D.C. 07, USA"
         }
       ]
     },
@@ -479,6 +501,30 @@
       "label": "IBM Cloud Private Cloud Connection Name",
       "hidden": false,
       "immutable": false
-    }
+    },
+    {
+	    "name": "icp_install_dir",
+	    "type": "string",
+	    "description": "ICP Install Directory",
+	    "hidden": false,
+	    "label": "ICP Install Directory",
+	    "secured": false
+	  },    
+    {
+	    "name": "registry_ca_cert",
+	    "type": "string",
+	    "description": "Base64 encoded private docker registry CA certificate. If CA certificate is emmpty then this value will be base64 encoded value of string NIL",
+	    "hidden": false,
+	    "label": "Base64 encoded private docker registry CA certificate",
+	    "secured": false
+	  },
+	  {
+	    "name": "registry_config_do_name",
+	    "type": "string",
+	    "description": "Name of docker private registry data object that contains docker registry details for this deployment.",
+	    "hidden": false,
+	    "label": "Docker Private Registry Data Object Name",
+	    "secured": false
+	  }      
   ]  
 }

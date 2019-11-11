@@ -40,3 +40,15 @@ output "ICP Admin Username" {
 output "connection_name" {
 	value = "${var.deployment}${random_id.clusterid.hex}"
 }
+
+output "registry_ca_cert"{
+  value = "${module.gather_output.registry_ca_cert}"
+} 
+
+output "icp_install_dir"{
+  value = "${module.gather_output.icp_install_dir}"
+} 
+
+output "registry_config_do_name"{
+	value = "${var.deployment}${random_id.clusterid.hex}RegistryConfig"
+}

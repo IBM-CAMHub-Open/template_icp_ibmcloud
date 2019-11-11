@@ -17,6 +17,13 @@ resource "ibm_lbaas" "proxy-lbaas" {
 
       backend_protocol = "TCP"
       backend_port = 80
+    },
+    {
+      frontend_protocol = "TCP"
+      frontend_port = 30000
+
+      backend_protocol = "TCP"
+      backend_port = 30000
     }
   ]
 }

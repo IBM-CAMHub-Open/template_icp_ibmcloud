@@ -312,8 +312,8 @@ write_files:
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
 runcmd:
-  - /opt/ibm/scripts/bootstrap.sh -u icpdeploy ${local.docker_package_uri != "" ? "-p ${local.docker_package_uri}" : "" } -d /dev/xvdc
   - echo '${ibm_compute_vm_instance.icp-boot.ipv4_address_private} ${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}' >> /etc/hosts
+  - /opt/ibm/scripts/bootstrap.sh -u icpdeploy ${local.docker_package_uri != "" ? "-p ${local.docker_package_uri}" : "" } -d /dev/xvdc
 EOF
 
   hourly_billing = "${var.mgmt["hourly_billing"]}"
@@ -415,8 +415,8 @@ write_files:
     encoding: b64
     content: ${base64encode("${tls_self_signed_cert.registry_cert.cert_pem}")}
 runcmd:
-  - /opt/ibm/scripts/bootstrap.sh -u icpdeploy ${local.docker_package_uri != "" ? "-p ${local.docker_package_uri}" : "" } -d /dev/xvdc
   - echo '${ibm_compute_vm_instance.icp-boot.ipv4_address_private} ${var.deployment}-boot-${random_id.clusterid.hex}.${var.domain}' >> /etc/hosts
+  - /opt/ibm/scripts/bootstrap.sh -u icpdeploy ${local.docker_package_uri != "" ? "-p ${local.docker_package_uri}" : "" } -d /dev/xvdc
 EOF
 
   # Permit an ssh loging for the key owner.

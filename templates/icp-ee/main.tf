@@ -83,3 +83,16 @@ data "ibm_compute_ssh_key" "public_key" {
 resource "random_id" "adminpassword" {
   byte_length = "16"
 }
+
+module "gather_output" {
+    source 						          = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=3.2.1//public_cloud_output"
+	  cluster_CA_domain           = "${ibm_lbaas.master-lbaas.vip}"
+    #cluster_CA_domain           = "${local.registry_server}"
+	  icp_master 				          = "${ibm_compute_vm_instance.icp-master.*.ipv4_address}"
+	  ssh_user 					          = "icpdeploy"
+	  ssh_key_base64 		          = "${base64encode(tls_private_key.installkey.private_key_pem)}"
+    bastion_host 			          = "${element(ibm_compute_vm_instance.icp-boot.*.ipv4_address, 0)}"
+	  bastion_user    	          = "icpdeploy"
+	  bastion_private_key_base64 	= "${base64encode(tls_private_key.installkey.private_key_pem)}"
+    dependsOn                   = "${module.icp_provision.install_complete}"
+}

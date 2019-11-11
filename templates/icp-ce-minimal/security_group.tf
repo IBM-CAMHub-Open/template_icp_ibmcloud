@@ -141,7 +141,6 @@ resource "ibm_security_group_rule" "allow_proxy_upd_nodeport" {
   security_group_id = "${ibm_security_group.proxy_group.id}"
 }
 
-
 resource "ibm_security_group" "proxy_group" {
   name = "${var.deployment}-proxy-${random_id.clusterid.hex}"
   description = "allow incoming to proxy"

@@ -1,18 +1,17 @@
-##########################################
-### Load the ICP Enterprise images tarball
-## This is skipped if installing from
-## external private registry
-##########################################
+
+##################################
+### Load the ICP image
+##################################
 resource "null_resource" "image_copy" {
   # Only copy image from local location if not available remotely
   count = "${var.image_location != "" && ! (substr(var.image_location, 0, 3) != "nfs"  || substr(var.image_location, 0, 4) != "http") ? 1 : 0}"
 
   provisioner "file" {
     connection {
-      host          = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
+      host          = "${var.boot_ipv4_address_private}"
       user          = "icpdeploy"
-      private_key   = "${tls_private_key.installkey.private_key_pem}"
-      bastion_host  = "${var.private_network_only ? ibm_compute_vm_instance.icp-boot.ipv4_address_private : ibm_compute_vm_instance.icp-boot.ipv4_address}"
+      private_key   = "${var.boot_private_key_pem}"
+      bastion_host  = "${var.private_network_only ? var.boot_ipv4_address_private : var.boot_ipv4_address}"
     }
 
     source = "${var.image_location}"
@@ -20,45 +19,32 @@ resource "null_resource" "image_copy" {
   }
 }
 
-resource "null_resource" "image_load" {
-  # Only do an image load if we have provided a location. Presumably if not we'll be loading from private registry server
-  count = "${var.image_location != "" ? 1 : 0}"
-  depends_on = ["null_resource.image_copy"]
-
-
-  connection {
-    host          = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
-    user          = "icpdeploy"
-    private_key   = "${tls_private_key.installkey.private_key_pem}"
-    bastion_host  = "${var.private_network_only ? ibm_compute_vm_instance.icp-boot.ipv4_address_private : ibm_compute_vm_instance.icp-boot.ipv4_address}"
-  }
-
-  provisioner "file" {
-    source = "${path.module}/scripts/load_image.sh"
-    destination = "/tmp/load_image.sh"
-  }
-
-  provisioner "remote-exec" {
-
-    # We need to wait for cloud init to finish it's boot sequence.
-    inline = [
-      "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 1; done",
-      "sudo mv /tmp/load_image.sh /opt/ibm/scripts/",
-      "sudo chmod a+x /opt/ibm/scripts/load_image.sh",
-      "/opt/ibm/scripts/load_image.sh -p ${var.image_location} -r ${local.registry_server} -u ${local.docker_username} -c ${local.docker_password}",
-      "sudo touch /opt/ibm/.imageload_complete"
-    ]
-  }
+module "image_load" {
+    source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=3.2.1//public_cloud_image_load"
+    # define dependency on image_copy
+    image_copy_finished = "${null_resource.image_copy.id}"
+    image_location = "${var.image_location}"
+    boot_ipv4_address_private = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
+    boot_ipv4_address = "${ibm_compute_vm_instance.icp-boot.ipv4_address}"
+    boot_private_key_pem = "${tls_private_key.installkey.private_key_pem}"
+    private_network_only = "${var.private_network_only}"
+    registry_server = "${local.registry_server}"
+    docker_username = "${local.docker_username}"
+    docker_password = "${local.docker_password}"
 }
 
 ##################################
 ### Deploy ICP to cluster
 ##################################
-module "icpprovision" {
-    source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//public_cloud"
+module "icp_provision" {
+    source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=3.2.1//public_cloud"
     # Provide IP addresses for boot, master, mgmt, va, proxy and workers
     boot-node = "${ibm_compute_vm_instance.icp-boot.ipv4_address_private}"
     bastion_host  = "${var.private_network_only ? ibm_compute_vm_instance.icp-boot.ipv4_address_private : ibm_compute_vm_instance.icp-boot.ipv4_address}"
+
+    #in support of workers scaling
+ 	  icp-worker = ["${ibm_compute_vm_instance.icp-worker.*.ipv4_address_private}"]
+
     icp-host-groups = {
         master = ["${ibm_compute_vm_instance.icp-master.*.ipv4_address_private}"]
         proxy = ["${ibm_compute_vm_instance.icp-proxy.*.ipv4_address_private}"]
@@ -108,13 +94,14 @@ module "icpprovision" {
     ssh_user        = "icpdeploy"
     ssh_key_base64  = "${base64encode(tls_private_key.installkey.private_key_pem)}"
     ssh_agent       = false
+    image_load_finished       = "${module.image_load.image_load_finished}"
     #image_location  = "${var.image_location}"
     # Make sure to wait for image load to complete
-    hooks = {
-      "boot-preconfig" = [
-        "while [ ! -f /opt/ibm/.imageload_complete ]; do sleep 5; done"
-      ]
-    }
+    #hooks = {
+    #  "boot-preconfig" = [
+    #    "while [ ! -f /opt/ibm/.imageload_complete ]; do sleep 5; done"
+    #  ]
+    #}
 
     ## Alternative approach
     # hooks = {
